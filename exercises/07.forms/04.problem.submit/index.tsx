@@ -6,8 +6,15 @@ function App() {
 			action="api/onboarding"
 			// 🦉 Follow these instructions in order. Test the behavior after each step
 			// 1️⃣ 🐨 set the method to "POST" then update api.server.ts to handle the POST request
+			method="POST"
 			// 2️⃣ 🐨 set the encType to "multipart/form-data"
+			encType="multipart/form-data"
 			// 3️⃣ 🐨 add an onSubmit handler that calls event.preventDefault()
+			onSubmit={(event) => {
+				event.preventDefault()
+				const formData = new FormData(event.currentTarget)
+				console.log(Object.fromEntries(formData))
+			}}
 			// 4️⃣ 🐨 create a FormData object from the form (💰 event.currentTarget)
 			// 5️⃣ 🐨 log the result of Object.fromEntries(formData)
 			// 6️⃣ 💯 as extra credit, see what happens if you remove the action, method, and encType
