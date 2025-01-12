@@ -5,15 +5,15 @@ import { createRoot } from 'react-dom/client'
 // 🦺 create an Operator type that's set to the union of +, -, *, and /
 // 🦉 Note: you cannot use "keyof typeof operations" anymore because of a
 // circular dependency here
-
+type OperationFn = (left: number, right: number) => number
 // 🦺 cast the operations variable to a Record of the Operator type and the OperationFn type
 const operations = {
 	// 🦺 remove all the ": number" from these functions
-	'+': (left: number, right: number): number => left + right,
-	'-': (left: number, right: number): number => left - right,
-	'*': (left: number, right: number): number => left * right,
-	'/': (left: number, right: number): number => left / right,
-}
+	'+': (left, right) => left + right,
+	'-': (left, right) => left - right,
+	'*': (left, right) => left * right,
+	'/': (left, right) => left / right,
+} satisfies Record<string, OperationFn>
 
 type CalculatorProps = {
 	left?: number
