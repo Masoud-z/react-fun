@@ -1,3 +1,4 @@
+import { ComponentProps } from '#node_modules/@types/react'
 import { createRoot } from 'react-dom/client'
 
 // 🐨 create a component called "Box" which accepts style (defaults to {}), className (defaults to ''), and children props.
@@ -40,13 +41,34 @@ const sizelessColorlessBox = (
 	</div>
 )
 
+type Size = 'small' | 'medium' | 'large'
+
+const Box = ({
+	size,
+	className = '',
+	style,
+	...props
+}: ComponentProps<'div'> & { size?: Size }) => (
+	<div
+		className={`box ${size && `box--${size}`} ${className}`}
+		style={{ fontStyle: 'italic', ...style }}
+		{...props}
+	/>
+)
+
 function App() {
 	return (
 		<div>
-			{smallBox}
-			{mediumBox}
-			{largeBox}
-			{sizelessColorlessBox}
+			<Box size="small" style={{ backgroundColor: 'lightblue' }}>
+				small lightblue box
+			</Box>
+			<Box size="medium" style={{ backgroundColor: 'pink' }}>
+				medium pink box
+			</Box>
+			<Box size="large" style={{ backgroundColor: 'orange' }}>
+				large orange box
+			</Box>
+			<Box>sizeless colorless box</Box>
 		</div>
 	)
 }
