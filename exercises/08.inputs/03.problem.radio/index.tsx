@@ -38,6 +38,17 @@ function App() {
 			</div>
 			{/* 🐨 add a fieldset with the legend "Visibility" */}
 			{/* 🐨 add two radio buttons for public/private options for the name "visibility" */}
+			<fieldset>
+				<legend>Visibility</legend>
+				<label>
+					<input type="radio" name="visibility" value="public" />
+					Public
+				</label>
+				<label>
+					<input type="radio" name="visibility" value="private" />
+					Private
+				</label>
+			</fieldset>
 			<div>
 				<label>
 					<input name="waiver" type="checkbox" />
